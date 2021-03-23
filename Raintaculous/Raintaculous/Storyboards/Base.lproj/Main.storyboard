@@ -23,6 +23,36 @@
             </objects>
             <point key="canvasLocation" x="20" y="89"/>
         </scene>
+        <!--Day View Controller-->
+        <scene sceneID="evu-53-grd">
+            <objects>
+                <viewController storyboardIdentifier="DayViewController" id="RIy-8c-tW4" customClass="DayViewController" customModule="Raintaculous" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oRV-eU-Xeu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="V2y-WR-zSD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NVW-Jm-s74" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="686" y="88"/>
+        </scene>
+        <!--Week View Controller-->
+        <scene sceneID="ITx-fC-Kk0">
+            <objects>
+                <viewController storyboardIdentifier="WeekViewController" id="nWu-l2-6KY" customClass="WeekViewController" customModule="Raintaculous" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Xl-gT-22b">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="e6u-i8-TMJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Yt-yH-yGa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1364" y="88"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">

@@ -15,6 +15,10 @@
 		96B4B9E8260A21F0006A944C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96B4B9E6260A21F0006A944C /* LaunchScreen.storyboard */; };
 		96B4B9F3260A21F1006A944C /* RaintaculousTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B4B9F2260A21F1006A944C /* RaintaculousTests.swift */; };
 		96B4B9FE260A21F1006A944C /* RaintaculousUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B4B9FD260A21F1006A944C /* RaintaculousUITests.swift */; };
+		96E1BD1E260A31E000ED1430 /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E1BD1D260A31E000ED1430 /* DayViewController.swift */; };
+		96E1BD27260A323300ED1430 /* WeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E1BD26260A323300ED1430 /* WeekViewController.swift */; };
+		96E1BD30260A32FE00ED1430 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E1BD2F260A32FE00ED1430 /* UIViewController.swift */; };
+		96E1BD38260A336900ED1430 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E1BD37260A336900ED1430 /* UIStoryboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		96B4B9F9260A21F1006A944C /* RaintaculousUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RaintaculousUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		96B4B9FD260A21F1006A944C /* RaintaculousUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaintaculousUITests.swift; sourceTree = "<group>"; };
 		96B4B9FF260A21F1006A944C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96E1BD1D260A31E000ED1430 /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
+		96E1BD26260A323300ED1430 /* WeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewController.swift; sourceTree = "<group>"; };
+		96E1BD2F260A32FE00ED1430 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		96E1BD37260A336900ED1430 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,7 @@
 		96B4B9DA260A21F0006A944C /* Raintaculous */ = {
 			isa = PBXGroup;
 			children = (
+				96E1BD2E260A32EB00ED1430 /* Extensions */,
 				96B4BA1B260A2EC5006A944C /* Supporting Files */,
 				96B4BA1A260A2EAE006A944C /* Resources */,
 				96B4BA19260A2E9B006A944C /* Storyboards */,
@@ -138,6 +147,7 @@
 		96B4BA14260A2D7F006A944C /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				96E1BD1B260A31B300ED1430 /* Weather View Controllers */,
 				96B4BA15260A2D9A006A944C /* Root View Controller */,
 			);
 			path = "View Controllers";
@@ -174,6 +184,40 @@
 				96B4B9E9260A21F0006A944C /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		96E1BD1B260A31B300ED1430 /* Weather View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				96E1BD25260A321B00ED1430 /* Week View Controller */,
+				96E1BD1C260A31BA00ED1430 /* Day View Controllers */,
+			);
+			path = "Weather View Controllers";
+			sourceTree = "<group>";
+		};
+		96E1BD1C260A31BA00ED1430 /* Day View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				96E1BD1D260A31E000ED1430 /* DayViewController.swift */,
+			);
+			path = "Day View Controllers";
+			sourceTree = "<group>";
+		};
+		96E1BD25260A321B00ED1430 /* Week View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				96E1BD26260A323300ED1430 /* WeekViewController.swift */,
+			);
+			path = "Week View Controller";
+			sourceTree = "<group>";
+		};
+		96E1BD2E260A32EB00ED1430 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				96E1BD2F260A32FE00ED1430 /* UIViewController.swift */,
+				96E1BD37260A336900ED1430 /* UIStoryboard.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,9 +350,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96E1BD27260A323300ED1430 /* WeekViewController.swift in Sources */,
 				96B4B9E0260A21F0006A944C /* RootViewController.swift in Sources */,
+				96E1BD30260A32FE00ED1430 /* UIViewController.swift in Sources */,
 				96B4B9DC260A21F0006A944C /* AppDelegate.swift in Sources */,
 				96B4B9DE260A21F0006A944C /* SceneDelegate.swift in Sources */,
+				96E1BD1E260A31E000ED1430 /* DayViewController.swift in Sources */,
+				96E1BD38260A336900ED1430 /* UIStoryboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
