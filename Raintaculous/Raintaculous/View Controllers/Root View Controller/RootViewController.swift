@@ -35,6 +35,8 @@ final class RootViewController: UIViewController {
         
         //setup child view controllers
         setupChildViewControllers()
+        
+        fetchWeatherData()
     }
 
     private func setupChildViewControllers() {
@@ -56,6 +58,19 @@ final class RootViewController: UIViewController {
         
         dayViewController.didMove(toParent: self)
         weekViewController.didMove(toParent: self)
+    }
+    
+    private func fetchWeatherData() {
+        let weatherRequest = WeatherRequest(scheme: WeatherService.scheme, host: WeatherService.host, path: WeatherService.path, location: Defaults.location, appId: WeatherService.apiKey)
+
+        URLSession.shared.dataTask(with: weatherRequest.url) { (data, response, error) in
+            if let error = error{
+                print("Request did fail with \(error)")
+            } else if let response = response {
+                print("the response is \(response)")
+            }
+            
+        }.resume()
     }
 }
 
