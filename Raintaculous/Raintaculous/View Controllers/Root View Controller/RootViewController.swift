@@ -11,21 +11,40 @@ final class RootViewController: UIViewController {
 
     //MARK:- Properties
     private let dayViewController: DayViewController = {
-        guard let dayViewController = UIStoryboard.main.instantiateViewController(identifier: DayViewController.storyboardIdentifier) as? DayViewController else {
-            fatalError("Unable to instiate Day View Controller")
+        if #available(iOS 13.0, *) {
+            guard let dayViewController = UIStoryboard.main.instantiateViewController(identifier: DayViewController.storyboardIdentifier) as? DayViewController else {
+                fatalError("Unable to instiate Day View Controller")
+            }
+            dayViewController.view.translatesAutoresizingMaskIntoConstraints = false
+            return dayViewController
+        } else {
+            // Fallback on earlier versions
+            guard let dayViewController = UIStoryboard.main.instantiateViewController(withIdentifier: DayViewController.storyboardIdentifier) as? DayViewController else {
+                fatalError("Unable to instiate Day View Controller")
+            }
+            dayViewController.view.translatesAutoresizingMaskIntoConstraints = false
+            return dayViewController
         }
         //Configure day view controller
-        dayViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        return dayViewController
+        
     }()
     
     private let weekViewController: WeekViewController = {
-        guard let weekViewController = UIStoryboard.main.instantiateViewController(identifier: WeekViewController.storyboardIdentifier) as? WeekViewController else {
-            fatalError("Unable to instiate Day View Controller")
+        if #available(iOS 13.0, *) {
+            guard let weekViewController = UIStoryboard.main.instantiateViewController(identifier: WeekViewController.storyboardIdentifier) as? WeekViewController else {
+                fatalError("Unable to instiate Week View Controller")
+            }
+            weekViewController.view.translatesAutoresizingMaskIntoConstraints = false
+            return weekViewController
+        } else {
+            // Fallback on earlier versions
+            guard let weekViewController = UIStoryboard.main.instantiateViewController(withIdentifier: WeekViewController.storyboardIdentifier) as? WeekViewController else {
+                fatalError("Unable to instiate Week View Controller")
+            }
+            weekViewController.view.translatesAutoresizingMaskIntoConstraints = false
+            return weekViewController
         }
-        //Configure day view controller
-        weekViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        return weekViewController
+   
     }()
     
     //MARK:- View life cycle
