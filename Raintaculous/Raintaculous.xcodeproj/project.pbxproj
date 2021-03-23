@@ -21,6 +21,7 @@
 		96E1BD38260A336900ED1430 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E1BD37260A336900ED1430 /* UIStoryboard.swift */; };
 		96E1BD47260A41FD00ED1430 /* WeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E1BD46260A41FD00ED1430 /* WeatherRequest.swift */; };
 		96E1BD50260A447800ED1430 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E1BD4F260A447800ED1430 /* Configuration.swift */; };
+		96E1BD62260A4F1A00ED1430 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E1BD61260A4F1A00ED1430 /* RootViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		96E1BD37260A336900ED1430 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 		96E1BD46260A41FD00ED1430 /* WeatherRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRequest.swift; sourceTree = "<group>"; };
 		96E1BD4F260A447800ED1430 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		96E1BD61260A4F1A00ED1430 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 		96B4BA15260A2D9A006A944C /* Root View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				96E1BD60260A4F0800ED1430 /* ViewModels */,
 				96B4B9DF260A21F0006A944C /* RootViewController.swift */,
 			);
 			path = "Root View Controller";
@@ -240,6 +243,14 @@
 				96E1BD4F260A447800ED1430 /* Configuration.swift */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		96E1BD60260A4F0800ED1430 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				96E1BD61260A4F1A00ED1430 /* RootViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96E1BD62260A4F1A00ED1430 /* RootViewModel.swift in Sources */,
 				96E1BD47260A41FD00ED1430 /* WeatherRequest.swift in Sources */,
 				96E1BD27260A323300ED1430 /* WeekViewController.swift in Sources */,
 				96B4B9E0260A21F0006A944C /* RootViewController.swift in Sources */,
