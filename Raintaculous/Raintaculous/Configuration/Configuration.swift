@@ -16,6 +16,6 @@ enum WeatherService {
     static let apiKey = "ad68f7b77f722b1585a302ecfd316cf3"
     static let scheme = "https"
     static let host = "api.openweathermap.org"
-    static let path = "/data/2.5/forecast"
-  
+    static let currentWeatherPath = "/data/2.5/weather"
+    static let forecastWeatherPath = "/data/2.5/forecast"
 }

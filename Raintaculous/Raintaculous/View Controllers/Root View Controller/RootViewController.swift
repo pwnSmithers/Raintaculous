@@ -8,6 +8,9 @@
 import UIKit
 
 final class RootViewController: UIViewController {
+    private enum AlertType{
+        case noWeatherDataAvailable
+    }
 
     //MARK:- Properties
     var viewModel: RootViewModel? {
@@ -16,6 +19,7 @@ final class RootViewController: UIViewController {
                 return
             }
             setupViewModel(with: viewModel)
+            setupForecastViewModel(with: viewModel)
         }
     }
     
@@ -89,12 +93,46 @@ final class RootViewController: UIViewController {
     
 
     private func setupViewModel(with viewModel: RootViewModel) {
-        viewModel.didFetchWeatherData = { (data, error) in
-            if let error = error {
-                print("unable to fetch weather data \(error)")
-            } else if let data = data {
-                print(data)
+        viewModel.didFetchCurrentWeatherData = {[weak self] (weatherData, error) in
+            if let _ = error {
+                self?.presentAlert(of: .noWeatherDataAvailable)
+            } else if let weatherData = weatherData {
+                let dayViewModel = DayViewModel(weatherData: weatherData.current)
+                self?.dayViewController.viewModel = dayViewModel
+            } else {
+                self?.presentAlert(of: .noWeatherDataAvailable)
             }
+        }
+    }
+    
+    private func setupForecastViewModel(with viewModel: RootViewModel) {
+        viewModel.didFetchForecastWeatherData = {[weak self] (weatherData, error) in
+            if let _ = error {
+                self?.presentAlert(of: .noWeatherDataAvailable)
+            } else if let weatherData = weatherData {
+                let weekViewModel = WeekViewModel(weatherData: weatherData.forecast)
+                self?.weekViewController.viewModel = weekViewModel
+            } else {
+                self?.presentAlert(of: .noWeatherDataAvailable)
+            }
+        }
+    }
+    
+    private func presentAlert(of alertType: AlertType) {
+        let title: String
+        let message: String
+        
+        switch alertType {
+        case .noWeatherDataAvailable:
+            title = "Unable to fetch weather data"
+            message = "The application is unable to fetch weather data. Please make sure your device is connected over wifi or cellular"
+        }
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)
         }
     }
 }
