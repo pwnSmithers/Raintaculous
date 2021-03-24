@@ -93,6 +93,7 @@ final class DayViewController: UIViewController {
         windSpeedLabel.text = viewModel.wind
         descriptionLabel.text = viewModel.description
         iconImageView.image = viewModel.image
+        timeLabel.text = viewModel.currentLoaction
         
         for view in weatherDataViews {
             view.isHidden = false

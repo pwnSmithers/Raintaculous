@@ -13,5 +13,6 @@ protocol ForecastWeatherData {
 
 protocol ForecastWeatherConditions {
     var main: MainClass {get}
-    var pop: Int {get}
+    var weather: [Weather] {get}
+    var wind: Wind {get}
 }

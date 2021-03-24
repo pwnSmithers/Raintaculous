@@ -1,0 +1,44 @@
+{
+    "coord": {
+        "lon": 122.0089,
+        "lat": 37.3351
+    },
+    "weather": [
+        {
+            "id": 804,
+            "main": "Clouds",
+            "description": "overcast clouds",
+            "icon": "04d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 283.12,
+        "feels_like": 281.69,
+        "temp_min": 283.12,
+        "temp_max": 283.12,
+        "pressure": 1018,
+        "humidity": 69,
+        "sea_level": 1018,
+        "grnd_level": 1011
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 0.31,
+        "deg": 359,
+        "gust": 1.14
+    },
+    "clouds": {
+        "all": 94
+    },
+    "dt": 1616579553,
+    "sys": {
+        "country": "CN",
+        "sunrise": 1616536194,
+        "sunset": 1616580396
+    },
+    "timezone": 28800,
+    "id": 1791536,
+    "name": "Tianfu",
+    "cod": 200
+}

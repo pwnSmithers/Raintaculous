@@ -97,7 +97,7 @@ final class RootViewController: UIViewController {
             if let _ = error {
                 self?.presentAlert(of: .noWeatherDataAvailable)
             } else if let weatherData = weatherData {
-                let dayViewModel = DayViewModel(currentWeatherData: weatherData.current, currentWind: weatherData.currentWind, todaysWeather: weatherData.currentWeather)
+                let dayViewModel = DayViewModel(currentWeatherData: weatherData.current, currentWind: weatherData.currentWind, todaysWeather: weatherData.currentWeather, currentLoaction: weatherData.locationName)
                 self?.dayViewController.viewModel = dayViewModel
             } else {
                 self?.presentAlert(of: .noWeatherDataAvailable)

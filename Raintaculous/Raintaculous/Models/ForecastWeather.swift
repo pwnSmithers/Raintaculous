@@ -33,11 +33,11 @@ struct List: Codable {
     let weather: [Weather]
     let clouds: Clouds
     let wind: Wind
-    let visibility, pop: Int
+    let visibility: Int
     let dtTxt: String
 
     enum CodingKeys: String, CodingKey {
-        case dt, main, weather, clouds, wind, visibility, pop
+        case dt, main, weather, clouds, wind, visibility
         case dtTxt = "dt_txt"
     }
 }
@@ -91,6 +91,6 @@ extension ForecastWeather: ForecastWeatherData {
 }
 
 extension List: ForecastWeatherConditions {
-    
+
 }
 

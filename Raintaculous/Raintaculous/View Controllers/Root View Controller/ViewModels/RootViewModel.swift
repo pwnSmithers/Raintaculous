@@ -39,6 +39,12 @@ class RootViewModel {
                     self?.didFetchCurrentWeatherData?(nil, .noWeatherDataAvailable)
                 } else if let data = data {
                     let decoder = JSONDecoder()
+                    if #available(iOS 10.0, *) {
+                        decoder.dateDecodingStrategy = .iso8601
+                    } else {
+                        // Fallback on earlier versions
+                        decoder.dateDecodingStrategy = .secondsSince1970
+                    }
                     do {
                         let currentWeatherResponnse = try decoder.decode(CurrentWeather.self, from: data)
                         self?.didFetchCurrentWeatherData?(currentWeatherResponnse, nil)
