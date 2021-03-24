@@ -18,7 +18,7 @@ struct CurrentWeather: Codable {
     let wind: Wind
     let clouds: Clouds
     let dt: Int
-    let sys: Sys
+//    let sys: Sys
     let timezone, id: Int
     let name: String
     let cod: Int
@@ -47,13 +47,13 @@ struct Main: Codable {
         case pressure, humidity
     }
 }
-
-// MARK: - Sys
-struct Sys: Codable {
-    let type, id: Int
-    let country: String
-    let sunrise, sunset: Int
-}
+//
+//// MARK: - Sys
+//struct Sys: Codable {
+//    let type, id: Int
+//    let country: String
+//    let sunrise, sunset: Int
+//}
 
 // MARK: - Weather
 struct Weather: Codable {
