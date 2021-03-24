@@ -8,24 +8,56 @@
 import UIKit
 
 final class RootViewController: UIViewController {
+    private enum AlertType{
+        case noWeatherDataAvailable
+    }
 
     //MARK:- Properties
+    var viewModel: RootViewModel? {
+        didSet {
+            guard let viewModel = viewModel else {
+                return
+            }
+            setupViewModel(with: viewModel)
+            setupForecastViewModel(with: viewModel)
+        }
+    }
+    
     private let dayViewController: DayViewController = {
-        guard let dayViewController = UIStoryboard.main.instantiateViewController(identifier: DayViewController.storyboardIdentifier) as? DayViewController else {
-            fatalError("Unable to instiate Day View Controller")
+        if #available(iOS 13.0, *) {
+            guard let dayViewController = UIStoryboard.main.instantiateViewController(identifier: DayViewController.storyboardIdentifier) as? DayViewController else {
+                fatalError("Unable to instiate Day View Controller")
+            }
+            dayViewController.view.translatesAutoresizingMaskIntoConstraints = false
+            return dayViewController
+        } else {
+            // Fallback on earlier versions
+            guard let dayViewController = UIStoryboard.main.instantiateViewController(withIdentifier: DayViewController.storyboardIdentifier) as? DayViewController else {
+                fatalError("Unable to instiate Day View Controller")
+            }
+            dayViewController.view.translatesAutoresizingMaskIntoConstraints = false
+            return dayViewController
         }
         //Configure day view controller
-        dayViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        return dayViewController
+        
     }()
     
     private let weekViewController: WeekViewController = {
-        guard let weekViewController = UIStoryboard.main.instantiateViewController(identifier: WeekViewController.storyboardIdentifier) as? WeekViewController else {
-            fatalError("Unable to instiate Day View Controller")
+        if #available(iOS 13.0, *) {
+            guard let weekViewController = UIStoryboard.main.instantiateViewController(identifier: WeekViewController.storyboardIdentifier) as? WeekViewController else {
+                fatalError("Unable to instiate Week View Controller")
+            }
+            weekViewController.view.translatesAutoresizingMaskIntoConstraints = false
+            return weekViewController
+        } else {
+            // Fallback on earlier versions
+            guard let weekViewController = UIStoryboard.main.instantiateViewController(withIdentifier: WeekViewController.storyboardIdentifier) as? WeekViewController else {
+                fatalError("Unable to instiate Week View Controller")
+            }
+            weekViewController.view.translatesAutoresizingMaskIntoConstraints = false
+            return weekViewController
         }
-        //Configure day view controller
-        weekViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        return weekViewController
+   
     }()
     
     //MARK:- View life cycle
@@ -36,7 +68,6 @@ final class RootViewController: UIViewController {
         //setup child view controllers
         setupChildViewControllers()
         
-        fetchWeatherData()
     }
 
     private func setupChildViewControllers() {
@@ -60,17 +91,49 @@ final class RootViewController: UIViewController {
         weekViewController.didMove(toParent: self)
     }
     
-    private func fetchWeatherData() {
-        let weatherRequest = WeatherRequest(scheme: WeatherService.scheme, host: WeatherService.host, path: WeatherService.path, location: Defaults.location, appId: WeatherService.apiKey)
 
-        URLSession.shared.dataTask(with: weatherRequest.url) { (data, response, error) in
-            if let error = error{
-                print("Request did fail with \(error)")
-            } else if let response = response {
-                print("the response is \(response)")
+    private func setupViewModel(with viewModel: RootViewModel) {
+        viewModel.didFetchCurrentWeatherData = {[weak self] (weatherData, error) in
+            if let _ = error {
+                self?.presentAlert(of: .noWeatherDataAvailable)
+            } else if let weatherData = weatherData {
+                let dayViewModel = DayViewModel(weatherData: weatherData.current)
+                self?.dayViewController.viewModel = dayViewModel
+            } else {
+                self?.presentAlert(of: .noWeatherDataAvailable)
             }
-            
-        }.resume()
+        }
+    }
+    
+    private func setupForecastViewModel(with viewModel: RootViewModel) {
+        viewModel.didFetchForecastWeatherData = {[weak self] (weatherData, error) in
+            if let _ = error {
+                self?.presentAlert(of: .noWeatherDataAvailable)
+            } else if let weatherData = weatherData {
+                let weekViewModel = WeekViewModel(weatherData: weatherData.forecast)
+                self?.weekViewController.viewModel = weekViewModel
+            } else {
+                self?.presentAlert(of: .noWeatherDataAvailable)
+            }
+        }
+    }
+    
+    private func presentAlert(of alertType: AlertType) {
+        let title: String
+        let message: String
+        
+        switch alertType {
+        case .noWeatherDataAvailable:
+            title = "Unable to fetch weather data"
+            message = "The application is unable to fetch weather data. Please make sure your device is connected over wifi or cellular"
+        }
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)
+        }
     }
 }
 
