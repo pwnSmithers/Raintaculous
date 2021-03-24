@@ -33,21 +33,24 @@ class RootViewModel {
                 
                 print("Status Code: \(response.statusCode) with response \(response)")
             }
-            if let error = error{
-                print("Unable to fetch Weather Data \(error)")
-                self?.didFetchCurrentWeatherData?(nil, .noWeatherDataAvailable)
-            } else if let data = data {
-                let decoder = JSONDecoder()
-                do {
-                    let currentWeatherResponnse = try decoder.decode(CurrentWeather.self, from: data)
-                    self?.didFetchCurrentWeatherData?(currentWeatherResponnse, nil)
-                } catch {
-                    print("Unable to decode JSON \(error)")
+            DispatchQueue.main.async {
+                if let error = error{
+                    print("Unable to fetch Weather Data \(error)")
+                    self?.didFetchCurrentWeatherData?(nil, .noWeatherDataAvailable)
+                } else if let data = data {
+                    let decoder = JSONDecoder()
+                    do {
+                        let currentWeatherResponnse = try decoder.decode(CurrentWeather.self, from: data)
+                        self?.didFetchCurrentWeatherData?(currentWeatherResponnse, nil)
+                    } catch {
+                        print("Unable to decode JSON \(error)")
+                        self?.didFetchCurrentWeatherData?(nil, .noWeatherDataAvailable)
+                    }
+                } else {
                     self?.didFetchCurrentWeatherData?(nil, .noWeatherDataAvailable)
                 }
-            } else {
-                self?.didFetchCurrentWeatherData?(nil, .noWeatherDataAvailable)
             }
+
             
         }.resume()
     }
@@ -59,22 +62,23 @@ class RootViewModel {
                 
                 print("Status Code: \(response.statusCode) with response \(response)")
             }
-            if let error = error{
-                print("Unable to fetch Weather Data \(error)")
-                self?.didFetchForecastWeatherData?(nil, .noWeatherDataAvailable)
-            } else if let data = data {
-                let decoder = JSONDecoder()
-                do {
-                    let forecastWeatherResponnse = try decoder.decode(ForecastWeather.self, from: data)
-                    self?.didFetchForecastWeatherData?(forecastWeatherResponnse, nil)
-                } catch {
-                    print("Unable to decode JSON \(error)")
+            DispatchQueue.main.async {
+                if let error = error{
+                    print("Unable to fetch Weather Data \(error)")
+                    self?.didFetchForecastWeatherData?(nil, .noWeatherDataAvailable)
+                } else if let data = data {
+                    let decoder = JSONDecoder()
+                    do {
+                        let forecastWeatherResponnse = try decoder.decode(ForecastWeather.self, from: data)
+                        self?.didFetchForecastWeatherData?(forecastWeatherResponnse, nil)
+                    } catch {
+                        print("Unable to decode JSON \(error)")
+                        self?.didFetchCurrentWeatherData?(nil, .noWeatherDataAvailable)
+                    }
+                } else {
                     self?.didFetchCurrentWeatherData?(nil, .noWeatherDataAvailable)
                 }
-            } else {
-                self?.didFetchCurrentWeatherData?(nil, .noWeatherDataAvailable)
             }
-            
         }.resume()
     }
     

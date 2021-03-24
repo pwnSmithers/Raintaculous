@@ -75,11 +75,29 @@ struct Wind: Codable {
 }
 
 extension CurrentWeather: CurrentWeatherData {
+    var currentWeather: [WeatherConditions] {
+        return weather
+    }
+    
+    var currentWind: CurrentWindConditions {
+        return wind
+    }
+    
     var current: CurrentWeatherConditions {
         return main
     }
+     
 }
 
 extension Main: CurrentWeatherConditions {
+    
+}
+
+extension Wind: CurrentWindConditions {
+    
+}
+
+extension Weather: WeatherConditions {
+ 
     
 }

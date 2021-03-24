@@ -28,6 +28,8 @@
 		96E1BD47260A41FD00ED1430 /* WeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E1BD46260A41FD00ED1430 /* WeatherRequest.swift */; };
 		96E1BD50260A447800ED1430 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E1BD4F260A447800ED1430 /* Configuration.swift */; };
 		96E1BD62260A4F1A00ED1430 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E1BD61260A4F1A00ED1430 /* RootViewModel.swift */; };
+		96EB2288260B38AF00E38E9C /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EB2287260B38AF00E38E9C /* Styles.swift */; };
+		96EB228D260B4EEC00E38E9C /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EB228C260B4EEC00E38E9C /* UIImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		96E1BD46260A41FD00ED1430 /* WeatherRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRequest.swift; sourceTree = "<group>"; };
 		96E1BD4F260A447800ED1430 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		96E1BD61260A4F1A00ED1430 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		96EB2287260B38AF00E38E9C /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		96EB228C260B4EEC00E38E9C /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +269,7 @@
 			children = (
 				96E1BD2F260A32FE00ED1430 /* UIViewController.swift */,
 				96E1BD37260A336900ED1430 /* UIStoryboard.swift */,
+				96EB228C260B4EEC00E38E9C /* UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				96E1BD4F260A447800ED1430 /* Configuration.swift */,
+				96EB2287260B38AF00E38E9C /* Styles.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -437,8 +443,10 @@
 				96E1BD30260A32FE00ED1430 /* UIViewController.swift in Sources */,
 				96B4B9DC260A21F0006A944C /* AppDelegate.swift in Sources */,
 				96B4B9DE260A21F0006A944C /* SceneDelegate.swift in Sources */,
+				96EB2288260B38AF00E38E9C /* Styles.swift in Sources */,
 				96E1BD1E260A31E000ED1430 /* DayViewController.swift in Sources */,
 				96A7BF6A260A623F009178E9 /* CurrentWeatherData.swift in Sources */,
+				96EB228D260B4EEC00E38E9C /* UIImage.swift in Sources */,
 				96E1BD38260A336900ED1430 /* UIStoryboard.swift in Sources */,
 				96A7BF78260AA4E4009178E9 /* DayViewModel.swift in Sources */,
 			);
