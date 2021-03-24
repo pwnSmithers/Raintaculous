@@ -32,6 +32,9 @@
 		96EB22A0260B5C0E00E38E9C /* DayViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EB229F260B5C0E00E38E9C /* DayViewModelTests.swift */; };
 		96EB22A9260B5CC700E38E9C /* CurrentWeather.json in Resources */ = {isa = PBXBuildFile; fileRef = 96EB22A8260B5CC700E38E9C /* CurrentWeather.json */; };
 		96EB22B2260B5D7300E38E9C /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EB22B1260B5D7300E38E9C /* XCTestCase.swift */; };
+		96EB22BB260B6BBD00E38E9C /* WeekDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EB22BA260B6BBD00E38E9C /* WeekDayTableViewCell.swift */; };
+		96EB22C0260B749800E38E9C /* WeekDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EB22BF260B749800E38E9C /* WeekDayViewModel.swift */; };
+		96EB22C6260B7A1F00E38E9C /* WeekDayRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EB22C5260B7A1F00E38E9C /* WeekDayRepresentable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +86,9 @@
 		96EB229F260B5C0E00E38E9C /* DayViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModelTests.swift; sourceTree = "<group>"; };
 		96EB22A8260B5CC700E38E9C /* CurrentWeather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CurrentWeather.json; sourceTree = "<group>"; };
 		96EB22B1260B5D7300E38E9C /* XCTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCase.swift; sourceTree = "<group>"; };
+		96EB22BA260B6BBD00E38E9C /* WeekDayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayTableViewCell.swift; sourceTree = "<group>"; };
+		96EB22BF260B749800E38E9C /* WeekDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayViewModel.swift; sourceTree = "<group>"; };
+		96EB22C5260B7A1F00E38E9C /* WeekDayRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayRepresentable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				96A7BF80260AA551009178E9 /* WeekViewModel.swift */,
+				96EB22BF260B749800E38E9C /* WeekDayViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -264,6 +271,8 @@
 		96E1BD25260A321B00ED1430 /* Week View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				96EB22C4260B7A0A00E38E9C /* Protocols */,
+				96EB22B9260B6B9000E38E9C /* Table View Cells */,
 				96A7BF7F260AA53D009178E9 /* View Models */,
 				96E1BD26260A323300ED1430 /* WeekViewController.swift */,
 			);
@@ -337,6 +346,22 @@
 				96EB22B1260B5D7300E38E9C /* XCTestCase.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		96EB22B9260B6B9000E38E9C /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				96EB22BA260B6BBD00E38E9C /* WeekDayTableViewCell.swift */,
+			);
+			path = "Table View Cells";
+			sourceTree = "<group>";
+		};
+		96EB22C4260B7A0A00E38E9C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				96EB22C5260B7A1F00E38E9C /* WeekDayRepresentable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -473,11 +498,13 @@
 			files = (
 				96E1BD62260A4F1A00ED1430 /* RootViewModel.swift in Sources */,
 				96E1BD47260A41FD00ED1430 /* WeatherRequest.swift in Sources */,
+				96EB22C6260B7A1F00E38E9C /* WeekDayRepresentable.swift in Sources */,
 				96A7BF72260A6687009178E9 /* CurrentWeather.swift in Sources */,
 				96E1BD27260A323300ED1430 /* WeekViewController.swift in Sources */,
 				96A7BF8C260AA605009178E9 /* ForeCastWeatherData.swift in Sources */,
 				96A7BF81260AA551009178E9 /* WeekViewModel.swift in Sources */,
 				96B4B9E0260A21F0006A944C /* RootViewController.swift in Sources */,
+				96EB22BB260B6BBD00E38E9C /* WeekDayTableViewCell.swift in Sources */,
 				96A7BF94260AA68E009178E9 /* ForecastWeather.swift in Sources */,
 				96E1BD50260A447800ED1430 /* Configuration.swift in Sources */,
 				96E1BD30260A32FE00ED1430 /* UIViewController.swift in Sources */,
@@ -485,6 +512,7 @@
 				96B4B9DE260A21F0006A944C /* SceneDelegate.swift in Sources */,
 				96EB2288260B38AF00E38E9C /* Styles.swift in Sources */,
 				96E1BD1E260A31E000ED1430 /* DayViewController.swift in Sources */,
+				96EB22C0260B749800E38E9C /* WeekDayViewModel.swift in Sources */,
 				96A7BF6A260A623F009178E9 /* CurrentWeatherData.swift in Sources */,
 				96EB228D260B4EEC00E38E9C /* UIImage.swift in Sources */,
 				96E1BD38260A336900ED1430 /* UIStoryboard.swift in Sources */,

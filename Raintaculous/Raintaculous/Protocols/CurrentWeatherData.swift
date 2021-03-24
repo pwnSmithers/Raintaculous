@@ -11,6 +11,7 @@ protocol CurrentWeatherData {
     var current: CurrentWeatherConditions {get}
     var currentWind: CurrentWindConditions {get}
     var currentWeather: [WeatherConditions] {get}
+    var locationName: String {get}
 }
 
 protocol CurrentWeatherConditions { 

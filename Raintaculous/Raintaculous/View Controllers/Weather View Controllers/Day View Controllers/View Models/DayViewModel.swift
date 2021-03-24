@@ -12,11 +12,18 @@ struct DayViewModel {
     let currentWeatherData: CurrentWeatherConditions
     let currentWind: CurrentWindConditions
     let todaysWeather: [WeatherConditions]
+    let currentLoaction: String
+    
+    private let dateFormatter = DateFormatter()
     
     var temp: String {
         return String(format: "%.1f °F", currentWeatherData.temp)
     }
     
+    
+    var name: String {
+        return currentLoaction
+    }
     
     var humidity: String {
         return String("\(currentWeatherData.humidity)%")

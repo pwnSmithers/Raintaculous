@@ -75,6 +75,14 @@ struct Wind: Codable {
 }
 
 extension CurrentWeather: CurrentWeatherData {
+    var time: Int {
+        return timezone
+    }
+    
+    var locationName: String {
+        return name
+    }
+    
     var currentWeather: [WeatherConditions] {
         return weather
     }
@@ -101,3 +109,4 @@ extension Weather: WeatherConditions {
  
     
 }
+
