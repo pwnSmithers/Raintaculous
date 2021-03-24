@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             fatalError("Unexpected  Root View controller Error")
         }
         
-        let rootViewModel = RootViewModel()
+        let rootViewModel = RootViewModel(locationService: LocationManager())
         rootViewController.viewModel = rootViewModel
         
         guard let _ = (scene as? UIWindowScene) else { return }
