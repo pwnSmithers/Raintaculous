@@ -19,7 +19,7 @@ class DayViewModelTests: XCTestCase {
         let decoder = JSONDecoder()
         let currentWeatherResponse = try! decoder.decode(CurrentWeather.self, from: data)
         
-        viewModel = DayViewModel(currentWeatherData: currentWeatherResponse.current, currentWind: currentWeatherResponse.wind, todaysWeather: currentWeatherResponse.weather)
+        viewModel = DayViewModel(currentWeatherData: currentWeatherResponse.current, currentWind: currentWeatherResponse.wind, todaysWeather: currentWeatherResponse.weather, currentLoaction: currentWeatherResponse.locationName)
     }
 
     func testDescription() {
