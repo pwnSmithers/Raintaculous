@@ -80,7 +80,7 @@ final class RootViewController: UIViewController {
         dayViewController.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         dayViewController.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         dayViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        dayViewController.view.heightAnchor.constraint(equalToConstant: Layout.DayView.height).isActive = true
+  
         
         weekViewController.view.topAnchor.constraint(equalTo: dayViewController.view.bottomAnchor).isActive = true
         weekViewController.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -97,7 +97,7 @@ final class RootViewController: UIViewController {
             if let _ = error {
                 self?.presentAlert(of: .noWeatherDataAvailable)
             } else if let weatherData = weatherData {
-                let dayViewModel = DayViewModel(weatherData: weatherData.current)
+                let dayViewModel = DayViewModel(currentWeatherData: weatherData.current, currentWind: weatherData.currentWind, todaysWeather: weatherData.currentWeather)
                 self?.dayViewController.viewModel = dayViewModel
             } else {
                 self?.presentAlert(of: .noWeatherDataAvailable)
@@ -133,14 +133,6 @@ final class RootViewController: UIViewController {
         alert.addAction(cancelAction)
         DispatchQueue.main.async {
             self.present(alert, animated: true)
-        }
-    }
-}
-
-extension RootViewController {
-    fileprivate enum Layout {
-        enum DayView {
-            static let height: CGFloat = 200.0
         }
     }
 }
