@@ -42,7 +42,7 @@ extension LocationManager: CLLocationManagerDelegate {
         guard let location = locations.first else {
             return
         }
-        let result: LocationServiceResult = .success(Location(location: location))
+        let result: LocationServiceResult = .success(LocationM(location: location))
         didFetchLocation?(result)
         didFetchLocation = nil
     }
@@ -53,7 +53,7 @@ extension LocationManager: CLLocationManagerDelegate {
     }
 }
 
-fileprivate extension Location {
+fileprivate extension LocationM {
     init(location: CLLocation) {
         latitude = location.coordinate.latitude
         longitude = location.coordinate.longitude
