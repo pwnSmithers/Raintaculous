@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D4G-Ko-TOm">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -9,6 +9,116 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Raintaculous-->
+        <scene sceneID="fjc-5G-fgs">
+            <objects>
+                <tableViewController storyboardIdentifier="ListLocationTableViewController" id="eGF-Re-in0" customClass="ListLocationTableViewController" customModule="Raintaculous" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="U2E-53-JUO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListLocationTableViewCell" rowHeight="94" id="bEv-Qf-Yzy" customClass="ListLocationTableViewCell" customModule="Raintaculous" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="94"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bEv-Qf-Yzy" id="Y5G-iE-IFc">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="AwQ-Be-GpO">
+                                            <rect key="frame" x="16" y="16" width="382" height="62"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Makerere" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TmK-rd-fG0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="191" height="62"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31.1111" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g67-L4-9mm">
+                                                    <rect key="frame" x="191" y="0.0" width="191" height="62"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="AwQ-Be-GpO" secondAttribute="trailing" constant="16" id="Aal-cd-hBD"/>
+                                        <constraint firstItem="AwQ-Be-GpO" firstAttribute="top" secondItem="Y5G-iE-IFc" secondAttribute="top" constant="16" id="IXz-bR-SMv"/>
+                                        <constraint firstAttribute="bottom" secondItem="AwQ-Be-GpO" secondAttribute="bottom" constant="16" id="Jm3-id-ss8"/>
+                                        <constraint firstItem="AwQ-Be-GpO" firstAttribute="leading" secondItem="Y5G-iE-IFc" secondAttribute="leading" constant="16" id="kqe-Sy-7fU"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="locationCoordinates" destination="g67-L4-9mm" id="ToR-T7-YXF"/>
+                                    <outlet property="locationName" destination="TmK-rd-fG0" id="v89-01-X9k"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="eGF-Re-in0" id="thJ-6g-Eid"/>
+                            <outlet property="delegate" destination="eGF-Re-in0" id="sy7-dG-oLJ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Raintaculous" id="LUH-6f-lH7">
+                        <barButtonItem key="leftBarButtonItem" title="Add" id="Yg7-jM-dGo">
+                            <connections>
+                                <segue destination="CqI-zw-bxQ" kind="show" id="Zv5-B0-MPj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4PO-tR-Sjf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-765.21739130434787" y="128.57142857142856"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="HzB-wr-a19">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="CqI-zw-bxQ" customClass="MapViewController" customModule="Raintaculous" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lob-0K-BKb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NKi-js-eap">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HbE-LW-g5a"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NKi-js-eap" firstAttribute="top" secondItem="lob-0K-BKb" secondAttribute="top" constant="88" id="AP9-qE-Gxf"/>
+                            <constraint firstAttribute="bottom" secondItem="NKi-js-eap" secondAttribute="bottom" id="CFo-Np-xpq"/>
+                            <constraint firstItem="NKi-js-eap" firstAttribute="trailing" secondItem="HbE-LW-g5a" secondAttribute="trailing" id="Dba-bM-2RW"/>
+                            <constraint firstItem="NKi-js-eap" firstAttribute="leading" secondItem="HbE-LW-g5a" secondAttribute="leading" id="vGn-yu-IrD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="iAb-wW-gel"/>
+                    <connections>
+                        <outlet property="mapView" destination="NKi-js-eap" id="ZJw-xZ-9Jn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hQh-eP-Car" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-100.00000000000001" y="128.57142857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yYH-Bx-cPn">
+            <objects>
+                <navigationController id="D4G-Ko-TOm" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WLm-Ue-GLs">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="eGF-Re-in0" kind="relationship" relationship="rootViewController" id="Pj0-PU-DiJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ALt-qF-hgP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1657" y="129"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -22,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="89"/>
+            <point key="canvasLocation" x="612" y="88"/>
         </scene>
         <!--Day View Controller-->
         <scene sceneID="evu-53-grd">
@@ -117,7 +227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NVW-Jm-s74" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="685.50724637681162" y="87.723214285714278"/>
+            <point key="canvasLocation" x="1270" y="88"/>
         </scene>
         <!--Week View Controller-->
         <scene sceneID="ITx-fC-Kk0">
@@ -225,7 +335,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Yt-yH-yGa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1362.3188405797102" y="87.723214285714278"/>
+            <point key="canvasLocation" x="1946" y="88"/>
         </scene>
     </scenes>
     <resources>
