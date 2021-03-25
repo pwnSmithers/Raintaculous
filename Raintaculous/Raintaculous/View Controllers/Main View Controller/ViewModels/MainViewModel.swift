@@ -1,5 +1,5 @@
 //
-//  RootViewModel.swift
+//  MainViewModel.swift
 //  Raintaculous
 //
 //  Created by Smithers on 23/03/2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RootViewModel: NSObject {
+class MainViewModel: NSObject {
     
     enum WeatherDataError: Error {
         case notAuthorizedToRequestLocation

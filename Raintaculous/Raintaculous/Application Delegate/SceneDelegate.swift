@@ -17,12 +17,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let rootViewController = window?.rootViewController as? RootViewController else {
-            fatalError("Unexpected  Root View controller Error")
+        guard let mainViewController = window?.rootViewController as? MainViewController else {
+            fatalError("Unexpected  Main View controller Error")
         }
         
-        let rootViewModel = RootViewModel(locationService: LocationManager())
-        rootViewController.viewModel = rootViewModel
+        let mainViewModel = MainViewModel(locationService: LocationManager())
+        mainViewController.viewModel = mainViewModel
         
         guard let _ = (scene as? UIWindowScene) else { return }
     }

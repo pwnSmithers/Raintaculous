@@ -1,5 +1,5 @@
 //
-//  RootViewController.swift
+//  MainViewController.swift
 //  Raintaculous
 //
 //  Created by Smithers on 23/03/2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class RootViewController: UIViewController {
+final class MainViewController: UIViewController {
     private enum AlertType{
         case notAuthorizedToRequestLocation
         case failedToRequestLocation
@@ -15,7 +15,7 @@ final class RootViewController: UIViewController {
     }
 
     //MARK:- Properties
-    var viewModel: RootViewModel? {
+    var viewModel: MainViewModel? {
         didSet {
             guard let viewModel = viewModel else {
                 return
@@ -94,7 +94,7 @@ final class RootViewController: UIViewController {
     }
     
 
-    private func setupViewModel(with viewModel: RootViewModel) {
+    private func setupViewModel(with viewModel: MainViewModel) {
         viewModel.didFetchCurrentWeatherData = {[weak self] (result) in
             switch result {
             case .success(let weatherData):
@@ -115,7 +115,7 @@ final class RootViewController: UIViewController {
         }
     }
     
-    private func setupForecastViewModel(with viewModel: RootViewModel) {
+    private func setupForecastViewModel(with viewModel: MainViewModel) {
         viewModel.didFetchForecastWeatherData = {[weak self] (result) in
             switch result {
             case .success(let weatherData):
