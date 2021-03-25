@@ -94,9 +94,16 @@
                             <constraint firstItem="NKi-js-eap" firstAttribute="leading" secondItem="HbE-LW-g5a" secondAttribute="leading" id="vGn-yu-IrD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="iAb-wW-gel"/>
+                    <navigationItem key="navigationItem" id="iAb-wW-gel">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="KwH-Lk-8c1">
+                            <connections>
+                                <action selector="saveButtonAction:" destination="CqI-zw-bxQ" id="Bmm-Al-usl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="NKi-js-eap" id="ZJw-xZ-9Jn"/>
+                        <outlet property="saveButton" destination="KwH-Lk-8c1" id="Uwk-p8-htV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQh-eP-Car" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

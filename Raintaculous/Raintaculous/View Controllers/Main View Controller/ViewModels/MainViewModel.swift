@@ -62,7 +62,7 @@ class MainViewModel: NSObject {
         }
     }
     
-    private func fetchCurrentWeatherData(for location: Location) {
+    private func fetchCurrentWeatherData(for location: LocationM) {
         let weatherRequest = WeatherRequest(scheme: WeatherService.scheme, host: WeatherService.host, path: WeatherService.currentWeatherPath, location: location, appId: WeatherService.apiKey)
 
         URLSession.shared.dataTask(with: weatherRequest.url) {[weak self] (data, response, error) in
@@ -102,7 +102,7 @@ class MainViewModel: NSObject {
         }.resume()
     }
     
-    private func fetchForecastWeatherData(for location: Location) {
+    private func fetchForecastWeatherData(for location: LocationM) {
         let weatherRequest = WeatherRequest(scheme: WeatherService.scheme, host: WeatherService.host, path: WeatherService.forecastWeatherPath, location: location, appId: WeatherService.apiKey)
         URLSession.shared.dataTask(with: weatherRequest.url) {[weak self] (data, response, error) in
             if let response = response as? HTTPURLResponse {

@@ -11,7 +11,7 @@ struct WeatherRequest {
     let scheme: String
     let host: String
     let path: String
-    let location: Location
+    let location: LocationM
     
     private var latitude: Double {
         return location.latitude

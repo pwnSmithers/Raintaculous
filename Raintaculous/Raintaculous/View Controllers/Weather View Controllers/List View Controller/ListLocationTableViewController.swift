@@ -9,6 +9,9 @@ import UIKit
 
 class ListLocationTableViewController: UITableViewController {
     
+    //MARK:- Properties
+    private var locations = [Location]()
+    
     //MARK:- Outlets
 
     override func viewDidLoad() {
@@ -17,12 +20,32 @@ class ListLocationTableViewController: UITableViewController {
         setupView()
    
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+       handleCoreData()
+    }
 
     //MARK:- private methods
     private func setupView() {
         self.clearsSelectionOnViewWillAppear = false
         self.navigationItem.rightBarButtonItem = self.editButtonItem
        
+    }
+    
+    private func handleCoreData() {
+        if #available(iOS 10.0, *){
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            do {
+                locations = try context.fetch(Location.fetchRequest())
+                self.tableView.reloadData()
+            }catch  let error as NSError {
+                print("Couln't fetch \(error), \(error.userInfo)")
+            }
+        } else {
+            
+        }
     }
     
     private let mapViewController: MapViewController = {
@@ -54,14 +77,29 @@ extension ListLocationTableViewController{
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return locations.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ListLocationTableViewCell.reuseidentifier, for: indexPath) as? ListLocationTableViewCell else {
             fatalError("Unable to dequeue week day table view cell")
         }
+        cell.locationCoordinates.text = "Lat: \(locations[indexPath.row].latitude ?? "") , Long: \(locations[indexPath.row].longitude ?? "")"
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            let location = locations[indexPath.row]
+            if #available(iOS 10.0, *){
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                let context = appDelegate.persistentContainer.viewContext
+                context.delete(location)
+                locations.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                appDelegate.saveContext()
+            }
+        }
     }
 }
