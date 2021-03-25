@@ -93,6 +93,19 @@ extension ListLocationTableViewController{
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailView"{
+            if let indexPath = self.tableView.indexPathForSelectedRow{
+                
+                let mainVC = segue.destination as! MainViewController
+                let selectedLocation = LocationM(latitude: Double(locations[indexPath.row].latitude ?? "") ?? -122.008928, longitude: Double(locations[indexPath.row].longitude ?? "") ?? -122.008928)
+                let mainViewModel = MainViewModel(locationService: LocationManager(), location: selectedLocation)
+                mainVC.viewModel = mainViewModel
+                
+            }
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             let location = locations[indexPath.row]

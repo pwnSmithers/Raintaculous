@@ -53,6 +53,7 @@
                                 <connections>
                                     <outlet property="locationCoordinates" destination="g67-L4-9mm" id="ToR-T7-YXF"/>
                                     <outlet property="locationName" destination="TmK-rd-fG0" id="v89-01-X9k"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="toDetailView" id="AfM-BK-UcT"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -117,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQh-eP-Car" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-100.00000000000001" y="128.57142857142856"/>
+            <point key="canvasLocation" x="659" y="-587"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yYH-Bx-cPn">
@@ -161,6 +162,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Kmk-na-0SR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
