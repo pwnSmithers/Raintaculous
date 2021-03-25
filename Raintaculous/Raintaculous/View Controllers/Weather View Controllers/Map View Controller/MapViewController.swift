@@ -81,13 +81,3 @@ class MapViewController: UIViewController {
         mapView.addAnnotation(annotation)
     }
 }
-
-//extension MapViewController: MKMapViewDelegate{
-//    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-//        let latValue: String = String(format: "%.02f", Float((view.annotation?.coordinate.latitude)!))
-//        let longValue: String = String(format: "%.02f", Float((view.annotation?.coordinate.longitude)!))
-//        self.latitude = latValue
-//        self.longitude = longValue
-//        print("Latitude \(latValue) Longitude \(longValue)")
-//    }
-//}

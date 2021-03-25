@@ -53,6 +53,7 @@
                                 <connections>
                                     <outlet property="locationCoordinates" destination="g67-L4-9mm" id="ToR-T7-YXF"/>
                                     <outlet property="locationName" destination="TmK-rd-fG0" id="v89-01-X9k"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="toDetailView" id="AfM-BK-UcT"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -67,7 +68,16 @@
                                 <segue destination="CqI-zw-bxQ" kind="show" id="Zv5-B0-MPj"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Help" id="UsI-5v-EcZ">
+                            <connections>
+                                <action selector="helpButtonAction:" destination="eGF-Re-in0" id="fws-5j-hUX"/>
+                                <segue destination="Ps2-bs-71K" kind="show" id="t0z-W2-yY9"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="helpButton" destination="UsI-5v-EcZ" id="kh4-Lf-6n6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4PO-tR-Sjf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -108,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQh-eP-Car" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-100.00000000000001" y="128.57142857142856"/>
+            <point key="canvasLocation" x="659" y="-587"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yYH-Bx-cPn">
@@ -126,6 +136,22 @@
             </objects>
             <point key="canvasLocation" x="-1657" y="129"/>
         </scene>
+        <!--Help View Controller-->
+        <scene sceneID="c3y-fR-XCg">
+            <objects>
+                <viewController storyboardIdentifier="HelpViewController" id="Ps2-bs-71K" customClass="HelpViewController" customModule="Raintaculous" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W4Y-rL-gMm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="4Q7-dX-2gP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iEt-uu-ao6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="20e-qo-sEO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-19" y="-587"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -136,6 +162,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Kmk-na-0SR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

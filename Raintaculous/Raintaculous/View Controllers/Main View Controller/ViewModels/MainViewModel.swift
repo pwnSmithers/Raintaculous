@@ -37,11 +37,11 @@ class MainViewModel: NSObject {
     private let locationService: LocationService
     
     //MARK:- Initializers
-    init(locationService: LocationService) {
+    init(locationService: LocationService, location: LocationM) {
         self.locationService = locationService
         super.init()
-        fetchCurrentWeatherData(for: Defaults.location)
-        fetchForecastWeatherData(for: Defaults.location)
+        fetchCurrentWeatherData(for: location)
+        fetchForecastWeatherData(for: location)
         fetchLocation()
     }
     
