@@ -12,6 +12,15 @@ class ListLocationTableViewController: UITableViewController {
     //MARK:- Properties
     private var locations = [Location]()
     
+    var viewModel: ListViewModel? {
+        didSet{
+            guard let viewModel = viewModel else {
+                return
+            }
+            setupViewModel(with: viewModel)
+        }
+    }
+    
     //MARK:- Outlets
     
     @IBOutlet weak var helpButton: UIBarButtonItem!
@@ -19,38 +28,30 @@ class ListLocationTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let listViewModel = ListViewModel()
+        self.viewModel = listViewModel
         setupView()
-   
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       handleCoreData()
+        viewModel?.handleCoreData()
     }
 
     //MARK:- private methods
     private func setupView() {
+        
         self.clearsSelectionOnViewWillAppear = false
 
         self.navigationItem.rightBarButtonItems = [helpButton,self.editButtonItem]
     }
     
     
-    private func handleCoreData() {
-        if #available(iOS 10.0, *){
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegate.persistentContainer.viewContext
-            do {
-                locations = try context.fetch(Location.fetchRequest())
-                self.tableView.reloadData()
-            }catch  let error as NSError {
-                print("Couln't fetch \(error), \(error.userInfo)")
-            }
-        } else {
-            
-        }
+    private func setupViewModel(with viewModel: ListViewModel) {
+        viewModel.handleCoreData()
+        tableView.reloadData()
     }
+    
     
     private let mapViewController: MapViewController = {
         if #available(iOS 13.0, *) {
@@ -81,14 +82,18 @@ extension ListLocationTableViewController{
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return locations.count
+        return viewModel?.locations.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ListLocationTableViewCell.reuseidentifier, for: indexPath) as? ListLocationTableViewCell else {
             fatalError("Unable to dequeue week day table view cell")
         }
-        cell.locationCoordinates.text = "Lat: \(locations[indexPath.row].latitude ?? "") , Long: \(locations[indexPath.row].longitude ?? "")"
+        
+        let cellVM = ListCellViewModel(location: LocationM(latitude: Double(viewModel?.locations[indexPath.row].latitude ?? "") ?? 0, longitude: Double(viewModel?.locations[indexPath.row].longitude ?? "") ?? 0))
+        cell.viewModel = cellVM
+        
+//        cell.locationCoordinates.text = "Lat: \(viewModel?.locations[indexPath.row].latitude ?? "") , Long: \(viewModel?.locations[indexPath.row].longitude ?? "")"
         
         return cell
     }
@@ -98,7 +103,7 @@ extension ListLocationTableViewController{
             if let indexPath = self.tableView.indexPathForSelectedRow{
                 
                 let mainVC = segue.destination as! MainViewController
-                let selectedLocation = LocationM(latitude: Double(locations[indexPath.row].latitude ?? "") ?? -122.008928, longitude: Double(locations[indexPath.row].longitude ?? "") ?? -122.008928)
+                let selectedLocation = LocationM(latitude: Double(viewModel?.locations[indexPath.row].latitude ?? "") ?? -122.008928, longitude: Double(viewModel?.locations[indexPath.row].longitude ?? "") ?? -122.008928)
                 let mainViewModel = MainViewModel(locationService: LocationManager(), location: selectedLocation)
                 mainVC.viewModel = mainViewModel
                 
@@ -113,7 +118,7 @@ extension ListLocationTableViewController{
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 let context = appDelegate.persistentContainer.viewContext
                 context.delete(location)
-                locations.remove(at: indexPath.row)
+                viewModel?.locations.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 appDelegate.saveContext()
             }
