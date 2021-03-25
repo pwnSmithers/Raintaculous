@@ -36,6 +36,7 @@ class ListLocationTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewModel?.handleCoreData()
+        tableView.reloadData()
     }
 
     //MARK:- private methods
