@@ -13,6 +13,15 @@ class ListLocationTableViewCell: UITableViewCell {
         return String(describing: self)
     }
     
+    var viewModel: ListCellViewModel? {
+        didSet {
+            guard let viewModel = viewModel else {
+                return
+            }
+            setupViewModel(with: viewModel)
+        }
+    }
+    
     //MARK:- Outlets
     @IBOutlet var locationName: UILabel! {
         didSet{
@@ -37,6 +46,17 @@ class ListLocationTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    private func setupViewModel(with viewModel: ListCellViewModel){
+        viewModel.didFetchCurrentCityName = {[weak self] (result) in
+            switch result {
+            case .success(let name):
+                self?.locationName.text = name.name
+            case .failure(let error):
+                print("handle this error \(error)")
+            }
+        }
+        self.locationCoordinates.text = "Lat: \(String(viewModel.location.latitude)) Lon: \( viewModel.location.longitude)"
+    }
     
 
 }

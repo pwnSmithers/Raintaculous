@@ -17,4 +17,5 @@ enum WeatherService {
     static let host = "api.openweathermap.org"
     static let currentWeatherPath = "/data/2.5/weather"
     static let forecastWeatherPath = "/data/2.5/forecast"
+    static let reverseGeocoding =  "/geo/1.0/reverse"
 }
