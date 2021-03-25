@@ -92,9 +92,6 @@ extension ListLocationTableViewController{
         
         let cellVM = ListCellViewModel(location: LocationM(latitude: Double(viewModel?.locations[indexPath.row].latitude ?? "") ?? 0, longitude: Double(viewModel?.locations[indexPath.row].longitude ?? "") ?? 0))
         cell.viewModel = cellVM
-        
-//        cell.locationCoordinates.text = "Lat: \(viewModel?.locations[indexPath.row].latitude ?? "") , Long: \(viewModel?.locations[indexPath.row].longitude ?? "")"
-        
         return cell
     }
     
@@ -113,15 +110,8 @@ extension ListLocationTableViewController{
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            let location = locations[indexPath.row]
-            if #available(iOS 10.0, *){
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                let context = appDelegate.persistentContainer.viewContext
-                context.delete(location)
-                viewModel?.locations.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-                appDelegate.saveContext()
-            }
+            viewModel?.deleteLocation(of: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 }

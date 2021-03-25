@@ -31,5 +31,16 @@ class ListViewModel: NSObject {
             
         }
     }
+    
+    func deleteLocation(of index: Int) {
+        let location = locations[index]
+        if #available(iOS 10.0, *){
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            context.delete(location)
+            locations.remove(at: index)
+            appDelegate.saveContext()
+        }
+    }
 
 }
