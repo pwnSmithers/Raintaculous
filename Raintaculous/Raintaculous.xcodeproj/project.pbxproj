@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		960BA23B260CAFE500ABDF47 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960BA23A260CAFE500ABDF47 /* MapViewModel.swift */; };
+		960BA243260CB18600ABDF47 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960BA242260CB18600ABDF47 /* HelpViewController.swift */; };
 		96A7BF6A260A623F009178E9 /* CurrentWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A7BF69260A623F009178E9 /* CurrentWeatherData.swift */; };
 		96A7BF72260A6687009178E9 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A7BF71260A6687009178E9 /* CurrentWeather.swift */; };
 		96A7BF78260AA4E4009178E9 /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A7BF77260AA4E4009178E9 /* DayViewModel.swift */; };
@@ -68,6 +70,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		960BA23A260CAFE500ABDF47 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		960BA242260CB18600ABDF47 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		96A7BF69260A623F009178E9 /* CurrentWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherData.swift; sourceTree = "<group>"; };
 		96A7BF71260A6687009178E9 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		96A7BF77260AA4E4009178E9 /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
@@ -142,6 +146,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		960BA239260CAFD600ABDF47 /* VIew Model */ = {
+			isa = PBXGroup;
+			children = (
+				960BA23A260CAFE500ABDF47 /* MapViewModel.swift */,
+			);
+			path = "VIew Model";
+			sourceTree = "<group>";
+		};
 		96A7BF68260A622D009178E9 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,7 +321,9 @@
 		96C0102E260C78D900E2FB3E /* Map View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				960BA239260CAFD600ABDF47 /* VIew Model */,
 				96C01035260C7D2A00E2FB3E /* MapViewController.swift */,
+				960BA242260CB18600ABDF47 /* HelpViewController.swift */,
 			);
 			path = "Map View Controller";
 			sourceTree = "<group>";
@@ -603,12 +617,14 @@
 				96C0102A260C761400E2FB3E /* LocationRepresentable.swift in Sources */,
 				96A7BF8C260AA605009178E9 /* ForeCastWeatherData.swift in Sources */,
 				96A7BF81260AA551009178E9 /* WeekViewModel.swift in Sources */,
+				960BA243260CB18600ABDF47 /* HelpViewController.swift in Sources */,
 				96B4B9E0260A21F0006A944C /* MainViewController.swift in Sources */,
 				96EB22BB260B6BBD00E38E9C /* WeekDayTableViewCell.swift in Sources */,
 				96A7BF94260AA68E009178E9 /* ForecastWeather.swift in Sources */,
 				96E1BD50260A447800ED1430 /* Configuration.swift in Sources */,
 				96E1BD30260A32FE00ED1430 /* UIViewController.swift in Sources */,
 				96C0105F260C8F1200E2FB3E /* Location+CoreDataProperties.swift in Sources */,
+				960BA23B260CAFE500ABDF47 /* MapViewModel.swift in Sources */,
 				96EB22DE260B8B4C00E38E9C /* LocationM.swift in Sources */,
 				96B4B9DC260A21F0006A944C /* AppDelegate.swift in Sources */,
 				96B4B9DE260A21F0006A944C /* SceneDelegate.swift in Sources */,

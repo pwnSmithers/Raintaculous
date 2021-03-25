@@ -13,6 +13,9 @@ class ListLocationTableViewController: UITableViewController {
     private var locations = [Location]()
     
     //MARK:- Outlets
+    
+    @IBOutlet weak var helpButton: UIBarButtonItem!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +32,10 @@ class ListLocationTableViewController: UITableViewController {
     //MARK:- private methods
     private func setupView() {
         self.clearsSelectionOnViewWillAppear = false
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
-       
+
+        self.navigationItem.rightBarButtonItems = [helpButton,self.editButtonItem]
     }
+    
     
     private func handleCoreData() {
         if #available(iOS 10.0, *){
