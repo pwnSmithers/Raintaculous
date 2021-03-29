@@ -88,12 +88,12 @@ final class DayViewController: UIViewController {
     
     private func setupViewModel(with viewModel: DayViewModel){
         activityIndicator.stopAnimating()
-        humidityLabel.text = viewModel.humidity
-        tempretureLabel.text = viewModel.temp
-        windSpeedLabel.text = viewModel.wind
+        humidityLabel.text = "Hum: \(viewModel.humidity)"
+        tempretureLabel.text = "Temp: \(viewModel.temp)"
+        windSpeedLabel.text = "Wind: \(viewModel.wind)"
         descriptionLabel.text = viewModel.description
         iconImageView.image = viewModel.image
-        timeLabel.text = viewModel.currentLoaction
+        timeLabel.text = "City: \(viewModel.currentLoaction)"
         
         for view in weatherDataViews {
             view.isHidden = false
