@@ -13,6 +13,8 @@ class MapViewController: UIViewController {
         case notAuthorizedToRequestLocation
         case failedToRequestLocation
         case noWeatherDataAvailable
+        case savedLocation
+        case howToSaveLocation
     }
     
     //MARK:- Properties
@@ -36,7 +38,6 @@ class MapViewController: UIViewController {
     @IBOutlet var saveButton: UIBarButtonItem!
     
     @IBAction func saveButtonAction(_ sender: Any) {
-        print("Save location")
         if #available(iOS 10.0, *){
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             //let mySceneDelegate = self.view.window?.windowScene?.delegate
@@ -45,6 +46,7 @@ class MapViewController: UIViewController {
             location.latitude = latitude
             location.longitude = longitude
             appDelegate.saveContext()
+            presentAlert(of: .savedLocation)
         } else {
             
         }
@@ -55,6 +57,11 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MapViewModel()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presentAlert(of: .howToSaveLocation)
     }
     
 
@@ -122,6 +129,12 @@ class MapViewController: UIViewController {
         case .failedToRequestLocation:
             title = "Unable to fetch weather data"
             message = "The application is unable to fetch your location. Please make sure your device is connected over wi-fi or cellular."
+        case .savedLocation:
+            title = "location saved"
+            message = "Successfully saved the location."
+        case .howToSaveLocation:
+            title = "How To Save a location"
+            message = "Tap anywhere on the map and hold for 0.5 seconds, this will drop a pin on the selected position of choice. After selecting a location, tap the save button at the top to bookmark the location."
         }
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
