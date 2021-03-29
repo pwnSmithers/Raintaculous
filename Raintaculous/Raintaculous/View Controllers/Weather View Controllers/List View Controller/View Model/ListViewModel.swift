@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol CurrentCityName {
     var name: String {get}
@@ -23,12 +24,17 @@ class ListViewModel: NSObject {
             let context = appDelegate.persistentContainer.viewContext
             do {
                 locations = try context.fetch(Location.fetchRequest())
-//                self.tableView.reloadData()
             }catch  let error as NSError {
                 print("Couln't fetch \(error), \(error.userInfo)")
             }
         } else {
-            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.managedObjectContext
+            do{
+                locations = try context.fetch(Location.fetchRequest())
+            }catch let error as NSError{
+                print("Couln't fetch \(error), \(error.userInfo)")
+            }
         }
     }
     
@@ -37,6 +43,12 @@ class ListViewModel: NSObject {
         if #available(iOS 10.0, *){
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
+            context.delete(location)
+            locations.remove(at: index)
+            appDelegate.saveContext()
+        } else {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.managedObjectContext
             context.delete(location)
             locations.remove(at: index)
             appDelegate.saveContext()

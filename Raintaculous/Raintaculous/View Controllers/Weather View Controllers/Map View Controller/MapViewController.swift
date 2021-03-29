@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class MapViewController: UIViewController {
     private enum AlertType{
@@ -40,7 +41,6 @@ class MapViewController: UIViewController {
     @IBAction func saveButtonAction(_ sender: Any) {
         if #available(iOS 10.0, *){
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            //let mySceneDelegate = self.view.window?.windowScene?.delegate
             let context = appDelegate.persistentContainer.viewContext
             let location = Location(entity: Location.entity(), insertInto: context)
             location.latitude = latitude
@@ -48,7 +48,14 @@ class MapViewController: UIViewController {
             appDelegate.saveContext()
             presentAlert(of: .savedLocation)
         } else {
-            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.managedObjectContext
+            let entity = NSEntityDescription.entity(forEntityName: "Location", in: context)!
+            let location = Location(entity: entity, insertInto: context)
+            location.latitude = latitude
+            location.longitude = longitude
+            appDelegate.saveContext()
+            presentAlert(of: .savedLocation)
         }
        
     }
