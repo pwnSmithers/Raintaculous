@@ -40,7 +40,6 @@ class MapViewModel: NSObject {
             case .success(let location):
                 let locationResult: CurrentLocationDataResult = .success(location)
                 self?.didFetchCurrentLocationData?(locationResult)
-                print(location)
             case .failure(_):
                 let errorResult: CurrentLocationDataResult = .failure(.notAuthorizedToRequestLocation)
                 self?.didFetchCurrentLocationData?(errorResult)

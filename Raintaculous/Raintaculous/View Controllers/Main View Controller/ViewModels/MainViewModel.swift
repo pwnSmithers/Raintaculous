@@ -53,10 +53,8 @@ class MainViewModel: NSObject {
             case .success(let location):
                 self?.fetchCurrentWeatherData(for: location)
                 self?.fetchForecastWeatherData(for: location)
-            case .failure(let error):
+            case .failure( _):
                 let result: CurrentWeatherDataResult = .failure(.notAuthorizedToRequestLocation)
-                
-                print("Unable to fetch location \(error)")
                 self?.didFetchCurrentWeatherData?(result)
             }
         }
@@ -71,8 +69,7 @@ class MainViewModel: NSObject {
                 print("Status Code: \(response.statusCode) with response \(response)")
             }
             DispatchQueue.main.async {
-                if let error = error{
-                    print("Unable to fetch Weather Data \(error)")
+                if let _ = error{
                     let result: CurrentWeatherDataResult = .failure(.noWeatherDataAvailable)
                     self?.didFetchCurrentWeatherData?(result)
                 } else if let data = data {
@@ -88,7 +85,6 @@ class MainViewModel: NSObject {
                         let result: CurrentWeatherDataResult = .success(currentWeatherResponnse)
                         self?.didFetchCurrentWeatherData?(result)
                     } catch {
-                        print("Unable to decode JSON \(error)")
                         let result: CurrentWeatherDataResult = .failure(.noWeatherDataAvailable)
                         self?.didFetchCurrentWeatherData?(result)
                     }

@@ -41,8 +41,7 @@ class ListCellViewModel: NSObject {
             }
             
             DispatchQueue.main.async {
-                if let error = error{
-                    print("Unable to fetch Weather Data \(error)")
+                if let _ = error{
                     let result: CurrentCityNameResult = .failure(.noCityInformationAvailable)
                     self?.didFetchCurrentCityName?(result)
                 } else if let data = data {
@@ -54,7 +53,6 @@ class ListCellViewModel: NSObject {
                         let result: CurrentCityNameResult = .success(cityName)
                         self?.didFetchCurrentCityName?(result)
                     } catch {
-                        print("Unable to decode JSON \(error)")
                         let result: CurrentCityNameResult = .failure(.noCityInformationAvailable)
                         self?.didFetchCurrentCityName?(result)
                     }
