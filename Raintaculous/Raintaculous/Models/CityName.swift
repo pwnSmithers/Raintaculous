@@ -12,11 +12,11 @@ import Foundation
 struct CityName: Codable {
     let name: String
     let lat, lon: Double
-    let country, state: String
+    let country: String
 
     enum CodingKeys: String, CodingKey {
         case name
-        case lat, lon, country, state
+        case lat, lon, country
     }
 }
 

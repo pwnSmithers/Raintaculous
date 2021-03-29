@@ -19,9 +19,8 @@ class LocationManager: NSObject, LocationService {
     private var didFetchLocation: FetchLocationCompletion?
     
     func fetchLocation(completion: @escaping FetchLocationCompletion) {
-        //to be use in future in case we need current user location
-//        didFetchLocation = completion
-//        locationManager.requestLocation()
+        didFetchLocation = completion
+        locationManager.requestLocation()
     }
 }
 

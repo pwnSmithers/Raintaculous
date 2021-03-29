@@ -9,12 +9,26 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController {
-
+    private enum AlertType{
+        case notAuthorizedToRequestLocation
+        case failedToRequestLocation
+        case noWeatherDataAvailable
+    }
+    
     //MARK:- Properties
     var selectedAnnotation: MKPointAnnotation?
     var latitude: String = ""
     var longitude: String = ""
     let annotation = MKPointAnnotation()
+    var viewModel: MapViewModel? {
+        didSet {
+            guard let viewModel = viewModel else {
+                return
+            }
+            setupView(with: viewModel)
+        }
+    }
+ 
     
     //MARK:- Outlets
     @IBOutlet var mapView: MKMapView!
@@ -40,29 +54,42 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setupView()
+        viewModel = MapViewModel()
     }
     
 
     //MARK:- PRIVATE METHODS
-    private func setupView() {
-        //mapView.delegate = self
-        
+    private func setupView(with viewModel: MapViewModel) {
         let longPressRecogniser = UILongPressGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         longPressRecogniser.minimumPressDuration = 0.5
         mapView.addGestureRecognizer(longPressRecogniser)
         mapView.mapType = MKMapType.standard
         
-        let location = CLLocationCoordinate2D(latitude: CLLocationDegrees(38.8977), longitude: CLLocationDegrees(-77.0365))
-        
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        let region = MKCoordinateRegion(center: location, span: span)
-        mapView.setRegion(region, animated: true)
-        
-        
-        annotation.coordinate = location
-        mapView.addAnnotation(annotation)
+        viewModel.didFetchCurrentLocationData = {[weak self] (result) in
+            switch result {
+            case .success(let location):
+                let location = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+                let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                let region = MKCoordinateRegion(center: location, span: span)
+                self?.mapView.setRegion(region, animated: true)
+                self?.annotation.coordinate = location
+                if let annotation = self?.annotation{
+                    self?.mapView.addAnnotation(annotation)
+                }
+                
+            case .failure(let error):
+            let alertType: AlertType
+            switch error {
+            case .notAuthorizedToRequestLocation:
+                alertType = .notAuthorizedToRequestLocation
+            case .noWeatherDataAvailable:
+                alertType = .noWeatherDataAvailable
+            case .failedToRequestLocation:
+                alertType = .failedToRequestLocation
+            }
+            self?.presentAlert(of: alertType)
+            }
+        }
         
     }
 
@@ -79,5 +106,29 @@ class MapViewController: UIViewController {
         self.longitude = String(format: "%0.02f", annotation.coordinate.longitude)
         annotation.title = "Latitude:" + String(format: "%0.02f", annotation.coordinate.latitude) + "Longitude:" + String(format: "%0.02f", annotation.coordinate.longitude)
         mapView.addAnnotation(annotation)
+    }
+    
+    private func presentAlert(of alertType: AlertType) {
+        let title: String
+        let message: String
+        
+        switch alertType {
+        case .noWeatherDataAvailable:
+            title = "Unable to fetch weather data"
+            message = "The application is unable to fetch weather data. Please make sure your device is connected over wifi or cellular"
+        case .notAuthorizedToRequestLocation:
+            title = "Unable to fetch wether data for your location"
+            message = "Raintaculous is not authorized to access your current location. This means it's unable to show you your current location. You can grant Raintaculous access to current location in the settings application."
+        case .failedToRequestLocation:
+            title = "Unable to fetch weather data"
+            message = "The application is unable to fetch your location. Please make sure your device is connected over wi-fi or cellular."
+        }
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)
+        }
     }
 }
