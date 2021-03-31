@@ -3,4 +3,54 @@
    uuid = "6EA0FF9B-642E-4CB7-A8D7-79D7B53611DC"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3E2FCFD0-AD82-4FAB-AA39-57953FF2472E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Raintaculous/View Controllers/Main View Controller/ViewModels/MainViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "fetchLocation()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3E2FCFD0-AD82-4FAB-AA39-57953FF2472E - d402b0fa1cc44474"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Raintaculous.MainViewModel.(fetchLocation in _A962BD2BA117D6EA27689D49CBE96331)() -&gt; ()"
+                  moduleName = "Raintaculous"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/smithers/Documents/Development/Raintaculous/Raintaculous/Raintaculous/View%20Controllers/Main%20View%20Controller/ViewModels/MainViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "25">
+               </Location>
+               <Location
+                  uuid = "3E2FCFD0-AD82-4FAB-AA39-57953FF2472E - c94e527a7cf80fe2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Raintaculous.LocationServiceResult) -&gt; () in Raintaculous.MainViewModel.(fetchLocation in _A962BD2BA117D6EA27689D49CBE96331)() -&gt; ()"
+                  moduleName = "Raintaculous"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/smithers/Documents/Development/Raintaculous/Raintaculous/Raintaculous/View%20Controllers/Main%20View%20Controller/ViewModels/MainViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "164">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
